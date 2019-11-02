@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <select onchange="myShape(this);">
+        <option>Choose Shape</option>
+        <option  value="circle" id="circle">Circle</option>
+        <option  value="sphere" id="sphere"> Sphere</option>
+        <option  value="square" id ="square">Square</option>
+    </select>
+    <input type="radio" name="choice" id="volume" value="volume"> Volume/Perimeter
+      <input type="radio" name="choice" id="area" value="area"> Area
+      <button role="button" id="result">Result</button>
+    
+    <div id="ifCircle" style="display: none;">
+         <input type="text" id="myCircle" name="" placeholder="Enter Radius" ><br>
+    </div>
+    <div id="ifSphere" style="display: none;">
+         <input type="text" id="mySphere" name="" placeholder="Enter Radius" ><br>
+    </div>
+    <div id="ifSquare" style="display: none;"> 
+         <input type="text" id="mySquare" name="" placeholder="Enter Length" ><br>
+    </div>
+    
+</body>
+</html>
+<script>
+let resultButton = document.querySelector("#result");
+function myShape(that) {
+    if (that.value == "circle") {
+        document.getElementById("ifCircle").style.display = "block";
+        resultButton.addEventListener("click", function() {
+        let select = document.querySelector('input[name="choice"]:checked');
+        let radiusInput1 = document.getElementById("myCircle").value;
+        if (document.querySelector("#volume").value === "volume")
+         getVolume1(radiusInput1);
+       else if (document.querySelector("#area").value === "area")
+       getSurfaceArea1(radiusInput1);
+});}
+    else {
+        document.getElementById("ifCircle").style.display = "none";
+    }
+    if (that.value == "sphere") {
+        document.getElementById("ifSphere").style.display = "block";
+        resultButton.addEventListener("click", function() {
+        let select = document.querySelector('option[name="choice"]:checked');
+        let radiusInput2 = document.getElementById("mySphere").value;
+        if (document.querySelector("#volume").value === "volume")
+         getVolume2(radiusInput2);
+       else if (document.querySelector("#area").value === "area")
+       getSurfaceArea2(radiusInput2);
+});
+    } else {
+        document.getElementById("ifSphere").style.display = "none";
+    }
+    if (that.value == "square") {
+        document.getElementById("ifSquare").style.display = "block";
+        resultButton.addEventListener("click", function() {
+        let select = document.querySelector('option[name="choice"]:checked');
+        let radiusInput3 = document.getElementById("mySquare").value;
+        if (document.querySelector("#volume").value === "volume")
+         getVolume3(radiusInput3);
+       else if (document.querySelector("#area").value === "area")
+       getSurfaceArea3(radiusInput3);
+});} 
+else {
+        document.getElementById("ifSquare").style.display = "none";
+    }
+
+}
+
+function getVolume1(radius) {
+  console.log(2 * Math.PI *radius);
+ }
+ function getSurfaceArea1(radius) {
+  console.log(4 * Math.PI * Math.pow(radius, 2));
+ } 
+
+ function getVolume2(radius) {
+  console.log((4 / 3) * Math.PI * Math.pow(radius, 3));
+ }
+ function getSurfaceArea2(radius) {
+  console.log(4 * Math.PI * Math.pow(radius, 2));
+ } 
+
+function getVolume3(radius) {
+  console.log(4 *radius);
+ }
+ function getSurfaceArea3(radius) {
+  console.log(Math.pow(radius, 2));
+ } 
+
+
+
+
+
+
+</script>
